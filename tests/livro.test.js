@@ -6,7 +6,6 @@ describe('API de Livros', () => {
     const resposta = await request(app)
       .post('/livros')
       .send({
-        isbn: '1234567890',
         nome: 'Dom Casmurro',
         autor: 'Machado de Assis',
         editora: 'Editora ABC',
