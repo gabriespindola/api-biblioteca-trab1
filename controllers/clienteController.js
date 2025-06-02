@@ -1,11 +1,10 @@
-const { clientes } = require('../models/cliente');
+const clienteService = require('../services/clienteService');
 
 exports.criarCliente = (req, res) => {
-  const novo = { id: clientes.length + 1, ...req.body };
-  clientes.push(novo);
+  const novo = clienteService.criarCliente(req.body);
   res.status(201).json(novo);
 };
 
 exports.listarClientes = (req, res) => {
-  res.json(clientes);
+  res.json(clienteService.listarClientes());
 };

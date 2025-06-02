@@ -1,27 +1,11 @@
-const { livros } = require('../models/livro');
+const livroService = require('../services/livroService');
 
 exports.criarLivro = (req, res) => {
-  const novo = { id: livros.length + 1, disponivel: true, ...req.body };
-  livros.push(novo);
-  res.status(201).json(novo);
+  const novoLivro = livroService.criarLivro(req.body);
+  res.status(201).json(novoLivro);
 };
 
 exports.listarLivros = (req, res) => {
-  const { autor, nome, disponivel } = req.query;
-
-  let resultado = livros;
-
-  if (nome) {
-    resultado = resultado.filter(l => l.nome.toLowerCase().includes(nome.toLowerCase()));
-  }
-
-  if (autor) {
-    resultado = resultado.filter(l => l.autor === autor);
-  }
-
-  if (disponivel === 'true') {
-    resultado = resultado.filter(l => l.disponivel);
-  }
-
-  res.json(resultado);
+  const livros = livroService.listarLivros(req.query);
+  res.json(livros);
 };

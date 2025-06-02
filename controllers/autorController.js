@@ -1,11 +1,10 @@
-const { autores } = require('../models/autor');
+const autorService = require('../services/autorService');
 
 exports.criarAutor = (req, res) => {
-  const novo = { id: autores.length + 1, ...req.body };
-  autores.push(novo);
+  const novo = autorService.criarAutor(req.body);
   res.status(201).json(novo);
 };
 
 exports.listarAutores = (req, res) => {
-  res.json(autores);
+  res.json(autorService.listarAutores());
 };

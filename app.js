@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const autorRoutes = require('./routes/autorRoutes');
@@ -7,7 +8,7 @@ const livroRoutes = require('./routes/livroRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
 const emprestimoRoutes = require('./routes/emprestimoRoutes');
 
-app.use(express.json());
+
 
 app.use('/usuarios', usuarioRoutes);
 app.use('/autores', autorRoutes);
